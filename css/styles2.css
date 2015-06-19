@@ -1,0 +1,189 @@
+html, body {
+	font-family:'Roboto';
+	font-weight:500;
+	height:100%;
+}
+
+body{
+	margin:0;
+	padding:0;
+	min-height: 100%;
+}
+
+#menu-bar{
+	top:0px;
+	width:100%;
+	position:absolute;
+	z-index:100;
+	background-color:black;
+	height: 45px;
+	text-align: right;
+}
+
+ul {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+ 
+ul#navigation {
+	display:inline-block;
+}
+ 
+ul#navigation li  {
+	float:left;
+	font-size: 11px;
+	text-transform: uppercase;
+}
+
+ul#navigation li a,
+ul#navigation li a:visited
+ {
+	margin-right: 15px;
+	margin-left: 15px;
+	letter-spacing: 2px;
+	display:inline-block;
+	line-height: 45px;
+	height:100%;
+	color: white;
+	text-decoration: none;
+}
+
+ul.sub_navigation {
+	position:absolute;
+	display:none;
+	background-color:black;
+}
+ 
+ul.sub_navigation li {
+	clear:both;
+	margin-right: 0px;
+}
+ 
+#menu-bar .logo{
+	float: left;
+	line-height: 45px;
+	margin-top:auto;
+	margin-bottom:auto;
+	height: 100%;
+	margin-left: 40px;
+}
+
+#menu-bar .logo img{
+	height: 20px;
+	vertical-align: middle;
+	margin-bottom: 3px;
+}
+
+#menu-bar img{
+	margin: 0;
+	height: 20px;
+	vertical-align: middle;
+}
+
+/** VIDEO **/
+
+#video-wrapper{
+	width: 100%;
+	height: 100%;
+}
+
+#video-wrapper video{
+width:100%;
+height:100%;
+}
+
+#full-video{
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+}
+
+/** SLIDER TUTORIAL **/
+
+#carousel {
+    width: 100%;
+    height: 100%;
+	display:block;
+	position:relative;
+}
+#slides {
+    overflow:hidden;
+    /* fix ie overflow issue */
+    position:relative;
+    width:100%;
+    height:90%;
+}
+/* remove the list styles, width : item width * total items */    
+#slides ul {
+    position:relative;
+    left:0;
+    top:0;
+    list-style:none;
+    margin:0;
+    padding:0;  
+	height:100%;
+	width:500%;
+}
+/* width of the item, in this case I put 250x250x gif */
+#slides li {
+    height:100%; 
+	margin-right: 100px;
+    float:left;
+}
+#slides li img {
+	height:100%;
+}
+
+/* Styling for prev and next buttons */
+#buttons { 
+	position: absolute;
+	z-index: 2;
+}
+
+#buttons a {
+    display:block; 
+    /*text-indent:-999em;*/
+    float:left;
+    outline:0;
+}
+a#prev {
+	color: black;
+	position: absolute;
+	font-size: 600%;
+	font-weight: 100;
+	left: 1%;
+	z-index: 2;	
+	text-decoration: none;
+	visibility:hidden;
+}
+
+a#prev:hover {
+    /*background:url(arrow.gif) 0 0 no-repeat;*/
+}
+
+a#prev:visited {
+	text-decoration: none;
+	color: black;
+}
+
+a#next {
+	color: black;
+	position: absolute;
+	font-size: 600%;
+	font-weight: 100;
+	right: 1%;
+	z-index: 2;
+	text-decoration: none;
+	visibility:hidden;
+}
+
+a#next:visited {
+	text-decoration: none;
+	color: black;
+}
+
+a#next:hover {
+    /*background:url(arrow.gif) -32px 0 no-repeat;*/
+}
+.clear {clear:both}

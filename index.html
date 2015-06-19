@@ -1,7 +1,177 @@
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+		<title>Enric Martí</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css" media="screen">
+		<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.slideme2.js"></script>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	var Nmax = $('#slides ul li').length - 1;
+    var N = 0;
+	var windowHeight = $(window).height();
+	var sliding = false;
+	
+	$( window ).resize(function() {
+		if( ($(window).height() <= 745 && windowHeight > 745) || ($(window).height() > 745 && windowHeight <= 745) )
+		{
+			var left_value = 30;
+			for ( var i = 0; i < N; i++ ) {
+				left_value -= $('#slides li').eq(i).outerWidth() + parseInt($('#slides li').eq(i).css("marginRight"));
+			}
+ 			$('#slides ul').css({'left':left_value}); 
+		}
+		windowHeight = $(window).height();
+	})
+	
+    $('#prev').click(function() {
+		if( !sliding && N > 0 )
+		{
+			sliding = true;
+			N = N - 1;
+			var prev_width = $('#slides li').eq(N+1).outerWidth();
+			var next_width = $('#slides li').eq(N).outerWidth();
+			var img_margin = parseInt($('#slides li').eq(N).css("marginRight"))
+			
+			if( N == 0 )
+				$("#prev").fadeOut("slow");
+			else if( N == Nmax -1 )
+				$("#next").fadeIn("slow");	
+			
+			//get the right position            
+			//var left_value = parseInt($('#slides ul').css('left')) + prev_width/2 + img_margin + next_width/2;
+			var left_value = parseInt($('#slides ul').css('left')) + next_width + img_margin;
+			
+			//slide the item            
+			$('#slides ul').animate({'left' : left_value}, 500,function(){    
+				sliding = false;
+			});
+         
+		}   
+				
+		//cancel the link behavior  
+		return false;
+    });
+
+    $('#next').click(function() {
+		if( !sliding && N < Nmax )
+		{
+			sliding = true;
+			N = N + 1;
+			var prev_width = $('#slides li').eq(N-1).outerWidth();
+			var next_width = $('#slides li').eq(N).outerWidth();
+			var img_margin = parseInt($('#slides li').eq(N).css("marginRight"))
+			
+			if( N == Nmax )
+				$("#next").fadeOut("slow");
+			else if ( N == 1 )
+				$("#prev").fadeIn("slow");
+
+			//get the right position
+			//var left_value = parseInt($('#slides ul').css('left')) - prev_width/2 - img_margin - next_width/2;
+			var left_value = parseInt($('#slides ul').css('left')) - prev_width - img_margin;
+
+			//slide the item
+			$('#slides ul').animate({'left' : left_value}, 500, function () {
+		 		sliding = false;  
+			});
+        }        
+
+        //cancel the link behavior
+        return false;    
+    });        
+    
+    //if mouse hover, pause the auto rotation, otherwise rotate it
+    $('#carousel').hover( function(){
+		if( N != Nmax )
+			$('#next').fadeIn("slow");
+		if( N != 0 )
+			$('#prev').fadeIn("slow");
+    }, function(){
+        $('#next').fadeOut("slow");
+		$('#prev').fadeOut("slow");
+    });
+        
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+       
+    // Add the 'hover' event listener to our drop down class
+	$('.dropdown').hover(function() {
+		// When the event is triggered, grab the current element 'this' and
+		// find it's children '.sub_navigation' and display/hide them
+		$(this).find('.sub_navigation').slideToggle().stop(true,true); 
+	});
+});
+</script>
+
+</head>
+
 <body>
-<h1>ENRIC MARTI PORTFOLIO</h1>
-<p>Comming soon...</p>
+	<div id="menu-bar">
+		<span class="logo">
+			<a href="#home"><img src="img/LogoEnric.svg"></img></a>
+		</span>
+		<a href="#" id="menu-icon"><img src="img/menu-icon.png"></img></a>
+		<ul id="navigation">
+			<li class="dropdown"><a href="#">Final degree project</a>
+				<ul class="sub_navigation">
+					<li><a href="#">Campaign</a></li>
+					<li><a href="#">Lookbook</a></li>
+					<li><a href="#">Making Off</a></li>
+					<li><a href="#">Inspirations</a></li>
+					<li><a href="#">Thesis</a></li>
+				</ul>		
+			</li>
+			<li class="dropdown"><a href="#">Projects</a>
+				<ul class="sub_navigation">
+					<li><a href="reticular-organism.html">Reticular organism</a></li>
+					<li><a href="#">The maker</a></li>
+					<li><a href="index.html">Behind the burka</a></li>
+					<li><a href="#">VA'Z</a></li>
+					<li><a href="#">Others</a></li>
+				</ul>
+			</li>
+			<!--<li><a href="#">Press</a></li>-->
+			<li><a href="#">About</a></li>
+			<li><a href="#">Contact</a></li>
+			<li><a href="https://instagram.com/enricmarti_/"  target="_blank"><img src="img/LogoInstagramBlanc.svg"></img></a></li>
+			<li><a href="http://enricmarti.tumblr.com/"  target="_blank"><img src="img/LogoTumblrBlanc.svg"></img></a></li>
+		</ul>
+	</div>
+
+<!--<div id="video-wrapper">
+	<iframe src="https://player.vimeo.com/video/120481551?autoplay=1" frameborder="0" id="full-video" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>-->
+
+<div id="content-wrapper">
+
+	<div id="carousel">
+		<a href="#" id="prev"><img class="arrow" src="img/prev.jpg" alt="Prev Arrow"></img></a>
+		<a href="#" id="next"><img class="arrow" src="img/next.jpg" alt="Prev Arrow"></img></a>
+		<div id="slides"> 
+			<ul>
+				<li><img src="img/Behind_the_burka/0.jpg" alt="Image" ></img></li>
+				<li><img src="img/Behind_the_burka/1.jpg" alt="Image" ></img></li>
+				<li><img src="img/Behind_the_burka/2.jpg" alt="Image" ></img></li>
+				<li><img src="img/Behind_the_burka/3.jpg" alt="Image" ></img></li>
+				<li><img src="img/Behind_the_burka/4.jpg" alt="Image" ></img></li>
+				<li><img src="img/Behind_the_burka/5.jpg" alt="Image" ></img></li>
+			</ul>
+		</div>
+	</div>
+	
+</div>
+
 </body>
+
 </html>
