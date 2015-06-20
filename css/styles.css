@@ -214,7 +214,7 @@ ul {
 		position:absolute;
 		display:none;
 		background-color:black;
-		border-bottom: 5px solid yellow;
+		border-bottom: 5px solid #e5ff07;
 	}
 	 
 	ul.sub_navigation li {
@@ -258,7 +258,7 @@ ul {
 		margin:0;
 		padding:0;  
 		height:100%;
-		width:600%;
+		width:200%;
 	}
 
 	#slides li {
