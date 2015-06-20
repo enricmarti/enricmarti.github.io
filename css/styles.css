@@ -84,6 +84,8 @@ ul {
 		padding-left: 30px;
 		font-size: 11px;
 		text-transform: uppercase;
+		margin-top: 10px;
+		margin-bottom: 10px;
 	}
 
 	#navigation li a,
@@ -201,18 +203,18 @@ ul {
 	ul#navigation li a:hover
 	{
 		color: grey;
+		border-bottom: 5px solid yellow;
 	}
+	ul#navigation .dropdown a:hover{ border-bottom: 0px; }
 
-	ul#navigation li a img:hover
-	{
-		color: grey;
-	}
+	ul#navigation li a img:hover { color: grey; }
 
 
 	ul.sub_navigation {
 		position:absolute;
 		display:none;
 		background-color:black;
+		border-bottom: 5px solid yellow;
 	}
 	 
 	ul.sub_navigation li {
@@ -277,7 +279,9 @@ ul {
 		text-decoration: none;
 		display: none;
 		top: 50%;
-		transform: translateY(-50%);
+		-ms-transform:translateY(-50%);
+		-webkit-transform:translateY(-50%);
+		transform:translateY(-50%);
 	}
 
 	a#next {
@@ -288,7 +292,9 @@ ul {
 		text-decoration: none;
 		display:none;	
 		top: 50%;
-		transform: translateY(-50%);
+		-ms-transform:translateY(-50%);
+		-webkit-transform:translateY(-50%);
+		transform:translateY(-50%);
 	}
 
 	.arrow{
