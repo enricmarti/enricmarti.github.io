@@ -14,11 +14,12 @@
 $(document).ready(function() {
 	
 	function sliderWidth(n){
-	console.log(n);
 		var width = 0;
 		for ( var i = 0; i <= n; i++ )
+		{
 			width += $('#slides li').eq(i).outerWidth() + parseInt($('#slides li').eq(i).css("marginRight"));
 		console.log(width);
+		}
 		return width;
 	}
 	
@@ -27,7 +28,7 @@ $(document).ready(function() {
 	var windowHeight = $(window).height();
 	var windowWidth = $(window).width();
 	var sliding = false;
-	console.log(Nmax);
+
 	if( $(window).width() > 800 )
 		$('#slides ul').css({'width':sliderWidth(Nmax)});
 	
