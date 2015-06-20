@@ -30,12 +30,11 @@ $(document).ready(function() {
 		windowHeight = $(window).height();
 	})
 	
-    $('#prev').click(function() {
+	function slideGalleryToPreviousImage(){
 		if( !sliding && N > 0 )
 		{
 			sliding = true;
 			N = N - 1;
-			var prev_width = $('#slides li').eq(N+1).outerWidth();
 			var next_width = $('#slides li').eq(N).outerWidth();
 			var img_margin = parseInt($('#slides li').eq(N).css("marginRight"))
 			
@@ -43,29 +42,22 @@ $(document).ready(function() {
 				$("#prev").fadeOut("slow");
 			else if( N == Nmax -1 )
 				$("#next").fadeIn("slow");	
-			
-			//get the right position            
-			//var left_value = parseInt($('#slides ul').css('left')) + prev_width/2 + img_margin + next_width/2;
+
 			var left_value = parseInt($('#slides ul').css('left')) + next_width + img_margin;
-			
-			//slide the item            
-			$('#slides ul').animate({'left' : left_value}, 500,function(){    
+     
+			$('#slides ul').animate({'left' : left_value}, 400,function(){    
 				sliding = false;
 			});
          
 		}   
-				
-		//cancel the link behavior  
 		return false;
-    });
-
-    $('#next').click(function() {
+	}
+	function slideGalleryToNextImage(){
 		if( !sliding && N < Nmax )
 		{
 			sliding = true;
 			N = N + 1;
 			var prev_width = $('#slides li').eq(N-1).outerWidth();
-			var next_width = $('#slides li').eq(N).outerWidth();
 			var img_margin = parseInt($('#slides li').eq(N).css("marginRight"))
 			
 			if( N == Nmax )
@@ -73,19 +65,23 @@ $(document).ready(function() {
 			else if ( N == 1 )
 				$("#prev").fadeIn("slow");
 
-			//get the right position
-			//var left_value = parseInt($('#slides ul').css('left')) - prev_width/2 - img_margin - next_width/2;
 			var left_value = parseInt($('#slides ul').css('left')) - prev_width - img_margin;
 
-			//slide the item
-			$('#slides ul').animate({'left' : left_value}, 500, function () {
+			$('#slides ul').animate({'left' : left_value}, 400, function () {
 		 		sliding = false;  
 			});
         }        
-
-        //cancel the link behavior
-        return false;    
-    });        
+        return false;   
+	}
+	
+	$(window).bind('mousewheel DOMMouseScroll', function(event){
+		if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0)
+			slideGalleryToPreviousImage();
+		else
+			slideGalleryToNextImage(); 
+	});
+    $('#prev').click( slideGalleryToPreviousImage );
+    $('#next').click( slideGalleryToNextImage );        
     
     $('#carousel').hover( function(){
 		if( N != Nmax )
@@ -171,12 +167,12 @@ $(document).ready(function() {
 		<a href="#" id="next"><img class="arrow" src="img/next.jpg" alt="Prev Arrow"></img></a>
 		<div id="slides"> 
 			<ul>
-				<li><img src="img/Behind_the_burka/0.jpg" alt="Image" ></img></li>
-				<li><img src="img/Behind_the_burka/1.jpg" alt="Image" ></img></li>
-				<li><img src="img/Behind_the_burka/2.jpg" alt="Image" ></img></li>
-				<li><img src="img/Behind_the_burka/3.jpg" alt="Image" ></img></li>
-				<li><img src="img/Behind_the_burka/4.jpg" alt="Image" ></img></li>
-				<li><img src="img/Behind_the_burka/5.jpg" alt="Image" ></img></li>
+				<li><img src="img/Behind_the_burka_72/0.jpg" alt="Image" ></img></li>
+				<li><img src="img/Behind_the_burka_72/1.jpg" alt="Image" ></img></li>
+				<li><img src="img/Behind_the_burka_72/2.jpg" alt="Image" ></img></li>
+				<li><img src="img/Behind_the_burka_72/3.jpg" alt="Image" ></img></li>
+				<li><img src="img/Behind_the_burka_72/4.jpg" alt="Image" ></img></li>
+				<li><img src="img/Behind_the_burka_72/5.jpg" alt="Image" ></img></li>
 			</ul>
 		</div>
 	</div>
