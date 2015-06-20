@@ -29,8 +29,11 @@ $(document).ready(function() {
 	var windowWidth = $(window).width();
 	var sliding = false;
 
-	if( $(window).width() > 800 )
-		$('#slides ul').css({'width':sliderWidth(Nmax)});
+	$(window).load(function() {
+		if( $(window).width() > 800 )
+			$('#slides ul').css({'width':sliderWidth(Nmax)});
+	});
+
 	
 	$( window ).resize(function() {
 		if( ($(window).height() <= 745 && windowHeight > 745) || ($(window).height() > 745 && windowHeight <= 745) )
