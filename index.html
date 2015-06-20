@@ -14,6 +14,7 @@
 $(document).ready(function() {
 	
 	function sliderWidth(n){
+	console.log(n);
 		var width = 0;
 		for ( var i = 0; i <= n; i++ )
 			width += $('#slides li').eq(i).outerWidth() + parseInt($('#slides li').eq(i).css("marginRight"));
@@ -26,16 +27,9 @@ $(document).ready(function() {
 	var windowHeight = $(window).height();
 	var windowWidth = $(window).width();
 	var sliding = false;
-	
+	console.log(Nmax);
 	if( $(window).width() > 800 )
-	{
-		var width = 0;
-		for ( var i = 0; i <= Nmax; i++ )
-			width += $('#slides li').eq(i).outerWidth() + parseInt($('#slides li').eq(i).css("marginRight"));
-		console.log(width);
-		$('#slides ul').css({'width':width});
-	}
-		//$('#slides ul').css({'width':sliderWidth(Nmax)});
+		$('#slides ul').css({'width':sliderWidth(Nmax)});
 	
 	$( window ).resize(function() {
 		if( ($(window).height() <= 745 && windowHeight > 745) || ($(window).height() > 745 && windowHeight <= 745) )
