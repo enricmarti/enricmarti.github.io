@@ -72,7 +72,50 @@ ul {
 }
 
 @media screen and (max-width:800px){
-	#navigation { display: none; }
+	#navigation { 
+		display: none;
+		/*display: inline-block;*/
+		width: 100%;
+		background-color: black;
+		text-align: left;
+	}
+	
+	#navigation li  {
+		padding-left: 30px;
+		font-size: 11px;
+		text-transform: uppercase;
+	}
+
+	#navigation li a,
+	#navigation li a:visited
+	 {
+		letter-spacing: 2px;
+		display:inline-block;
+		line-height: 30px;
+		height:100%;
+		color: white;
+		text-decoration: none;
+	}
+	
+	#menu-bar li a img{
+		margin: 0;
+		height: 20px;
+		vertical-align: middle;
+	}
+
+	ul#navigation li a:hover{ color: grey; }
+
+	ul.sub_navigation {
+		display:none;
+		background-color:black;
+	}
+	 
+	ul.sub_navigation li {
+		clear:both;
+		margin-right: 0px;
+	}
+	
+	/*----------*/
 	#menu-bar #menu-icon{
 		float:right;
 		line-height: 45px;

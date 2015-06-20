@@ -8,7 +8,6 @@
 		<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
 		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/jquery.slideme2.js"></script>
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
 
 <script type="text/javascript">
@@ -88,7 +87,6 @@ $(document).ready(function() {
         return false;    
     });        
     
-    //if mouse hover, pause the auto rotation, otherwise rotate it
     $('#carousel').hover( function(){
 		if( N != Nmax )
 			$('#next').fadeIn("slow");
@@ -104,11 +102,23 @@ $(document).ready(function() {
 
 <script type="text/javascript">
 $(document).ready(function() {
-       
-    // Add the 'hover' event listener to our drop down class
+
+	var menuOpened = false;
+     
+	$('#menu-icon').click( function(){
+		if( !menuOpened )
+		{
+			$('#navigation').css({display:"inline-block"});
+			menuOpened = true;
+		}
+		else
+		{
+			$('#navigation').css({display:"none"});
+			menuOpened = false;		
+		}
+	});
+
 	$('.dropdown').hover(function() {
-		// When the event is triggered, grab the current element 'this' and
-		// find it's children '.sub_navigation' and display/hide them
 		$(this).find('.sub_navigation').slideToggle().stop(true,true); 
 	});
 });
@@ -128,6 +138,7 @@ $(document).ready(function() {
 					<li><a href="#">Campaign</a></li>
 					<li><a href="#">Lookbook</a></li>
 					<li><a href="#">Making Off</a></li>
+					<li><a href="#">Full Collection</a></li>
 					<li><a href="#">Inspirations</a></li>
 					<li><a href="#">Thesis</a></li>
 				</ul>		
