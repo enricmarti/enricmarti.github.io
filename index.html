@@ -13,10 +13,22 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	
+	function sliderWidth(n){
+		var width = 0;
+		for ( var i = 0; i <= n; i++ )
+			width += $('#slides li').eq(i).outerWidth() + parseInt($('#slides li').eq(i).css("marginRight"));
+		console.log(width);
+		return width;
+	}
+	
 	var Nmax = $('#slides ul li').length - 1;
     var N = 0;
 	var windowHeight = $(window).height();
+	var windowWidth = $(window).width();
 	var sliding = false;
+	
+	if( $(window).width() > 800 )
+		$('#slides ul').css({'width':sliderWidth(Nmax)});
 	
 	$( window ).resize(function() {
 		if( ($(window).height() <= 745 && windowHeight > 745) || ($(window).height() > 745 && windowHeight <= 745) )
@@ -26,8 +38,14 @@ $(document).ready(function() {
 				left_value -= $('#slides li').eq(i).outerWidth() + parseInt($('#slides li').eq(i).css("marginRight"));
 			}
  			$('#slides ul').css({'left':left_value}); 
+			$('#slides ul').css({'width':sliderWidth(Nmax)});
 		}
+		if( $(window).width() <= 800 && windowWidth > 800 )
+			$('#slides ul').css({'width':"100%"});
+		else if( $(window).width() > 800 && windowWidth <= 800 )
+			$('#slides ul').css({'width':sliderWidth(Nmax)});
 		windowHeight = $(window).height();
+		windowWidth = $(window).width();
 	})
 	
 	function slideGalleryToPreviousImage(){
@@ -145,9 +163,8 @@ $(document).ready(function() {
 			</li>
 			<li class="dropdown"><a href="#">Projects</a>
 				<ul class="sub_navigation">
-					<li><a href="reticular-organism.html">Reticular organism</a></li>
+					<li><a href="#">Reticular organism</a></li>
 					<li><a href="#">The maker</a></li>
-					<li><a href="index.html">Behind the burka</a></li>
 					<li><a href="#">VA'Z</a></li>
 					<li><a href="#">Others</a></li>
 				</ul>
@@ -198,6 +215,7 @@ $(document).ready(function() {
 				<li><img src="img/PFG-campaign_72/13.jpg" alt="PFG Campaign Image" ></img></li>-->
 			</ul>
 		</div>
+		<!--<p>Copyright bla bla bla bla.</p>-->
 	</div>
 	
 </div>
