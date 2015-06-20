@@ -28,7 +28,14 @@ $(document).ready(function() {
 	var sliding = false;
 	
 	if( $(window).width() > 800 )
-		$('#slides ul').css({'width':sliderWidth(Nmax)});
+	{
+		var width = 0;
+		for ( var i = 0; i <= Nmax; i++ )
+			width += $('#slides li').eq(i).outerWidth() + parseInt($('#slides li').eq(i).css("marginRight"));
+		console.log(width);
+		$('#slides ul').css({'width':width});
+	}
+		//$('#slides ul').css({'width':sliderWidth(Nmax)});
 	
 	$( window ).resize(function() {
 		if( ($(window).height() <= 745 && windowHeight > 745) || ($(window).height() > 745 && windowHeight <= 745) )
