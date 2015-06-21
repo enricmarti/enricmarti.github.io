@@ -125,7 +125,10 @@ ul {
 		margin-bottom:auto;
 		margin-right: 20px;
 	}
-	#menu-bar #menu-icon img{ height: 30px; vertical-align: middle; }
+	#menu-bar #menu-icon:visited{ color: white; }
+	#menu-bar #menu-icon i{ vertical-align: middle; }
+	/*#menu-bar #menu-icon img{ height: 30px; vertical-align: middle; color: white; }*/
+	
 	#carousel {
 		width: 100%;
 		display:block;
@@ -186,6 +189,9 @@ ul {
 		height: 20px;
 		vertical-align: middle;
 	}
+	#menu-bar li a i{
+		vertical-align: middle;
+	}
 
 	ul#navigation li a,
 	ul#navigation li a:visited
@@ -237,9 +243,7 @@ ul {
 	}
 
 	@media screen and (max-height:745px){
-		#carousel{
-			height: 600px;
-		}
+		#carousel{ height: 600px; }
 	}
 
 	#slides {
@@ -274,7 +278,7 @@ ul {
 	a#prev {
 		color: black;
 		position: absolute;
-		left: 1%;
+		left: 10px;
 		z-index: 2;	
 		text-decoration: none;
 		display: none;
@@ -287,7 +291,7 @@ ul {
 	a#next {
 		color: black;
 		position: absolute;
-		right: 1%;
+		right: 10px;
 		z-index: 2;
 		text-decoration: none;
 		display:none;	

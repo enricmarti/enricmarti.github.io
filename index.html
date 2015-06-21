@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 		<title>Enric Marti</title>
 		<link rel="stylesheet" type="text/css" href="css/styles.css" media="screen">
+		<link rel="stylesheet" href="font-awesome-4.3.0/css/font-awesome.min.css">
 		<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
 		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 		<script type="text/javascript" src="js/jquery.js"></script>
@@ -32,19 +33,21 @@ $(document).ready(function() {
 	});
 	
 	$( window ).resize(function() {
-		if( ($(window).height() <= 745 && windowHeight > 745) || ($(window).height() > 745 && windowHeight <= 745) )
+		if( $(window).width() > 800 && (($(window).height() <= 745 && windowHeight > 745) || ($(window).height() > 745 && windowHeight <= 745)) )
 		{
-			var left_value = 30;
-			for ( var i = 0; i < N; i++ ) {
-				left_value -= $('#slides li').eq(i).outerWidth() + parseInt($('#slides li').eq(i).css("marginRight"));
-			}
- 			$('#slides ul').css({'left':left_value}); 
+ 			$('#slides ul').css({'left': 30 - sliderWidth(N-1)}); 
 			$('#slides ul').css({'width':sliderWidth(Nmax)});
 		}
 		if( $(window).width() <= 800 && windowWidth > 800 )
-			$('#slides ul').css({'width':"100%"});
+		{
+			$('#slides ul').css({'width':"100%"});	
+			$('#navigation').css({display:"none"});				
+		}
 		else if( $(window).width() > 800 && windowWidth <= 800 )
+		{
 			$('#slides ul').css({'width':sliderWidth(Nmax)});
+			$('#navigation').css({display:"inline-block"});	
+		}
 		windowHeight = $(window).height();
 		windowWidth = $(window).width();
 	})
@@ -128,11 +131,13 @@ $(document).ready(function() {
 		if( !menuOpened )
 		{
 			$('#navigation').css({display:"inline-block"});
+			$('#menu-bar #menu-icon').css({color:"grey"});
 			menuOpened = true;
 		}
 		else
 		{
 			$('#navigation').css({display:"none"});
+			$('#menu-bar #menu-icon').css({color:"white"});
 			menuOpened = false;		
 		}
 	});
@@ -140,6 +145,16 @@ $(document).ready(function() {
 	$('.dropdown').hover(function() {
 		$(this).find('.sub_navigation').slideToggle().stop(true,true); 
 	});
+	
+	$(document).on('click', function(event) {
+		if (!$(event.target).closest('#menu-bar').length && menuOpened)
+		{
+			$('#navigation').css({display:"none"});
+			$('#menu-bar #menu-icon').css({color:"white"});
+			menuOpened = false;
+		}
+	});
+	
 });
 </script>
 
@@ -150,7 +165,8 @@ $(document).ready(function() {
 		<span class="logo">
 			<a href="#home"><img src="img/LogoEnric.svg"></img></a>
 		</span>
-		<a href="#" id="menu-icon"><img src="img/menu-icon.png"></img></a>
+		<a href="#" id="menu-icon"><i class="fa fa-bars fa-2x"></i></a>
+		<!--<a href="#" id="menu-icon"><img src="img/menu-icon.png"></img></a>-->
 		<ul id="navigation">
 			<li class="dropdown"><a href="#">Final degree project</a>
 				<ul class="sub_navigation">
@@ -173,8 +189,10 @@ $(document).ready(function() {
 			<!--<li><a href="#">Press</a></li>-->
 			<li><a href="#">About</a></li>
 			<li><a href="#">Contact</a></li>
-			<li><a href="https://instagram.com/enricmarti_/"  target="_blank"><img src="img/LogoInstagramBlanc.svg"></img></a></li>
-			<li><a href="http://enricmarti.tumblr.com/"  target="_blank"><img src="img/LogoTumblrBlanc.svg"></img></a></li>
+			<li><a href="https://instagram.com/enricmarti_/"  target="_blank"><i class="fa fa-instagram fa-2x"></i></a></li>
+			<li><a href="http://enricmarti.tumblr.com/"  target="_blank"><i class="fa fa-tumblr-square fa-2x"></i></a></li>
+			<!--<li><a href="https://instagram.com/enricmarti_/"  target="_blank"><img src="img/LogoInstagramBlanc.svg"></img></a></li>
+			<li><a href="http://enricmarti.tumblr.com/"  target="_blank"><img src="img/LogoTumblrBlanc.svg"></img></a></li>-->
 		</ul>
 	</div>
 
