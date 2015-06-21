@@ -124,6 +124,7 @@ ul {
 		margin-top:auto;
 		margin-bottom:auto;
 		margin-right: 20px;
+		color: white;
 	}
 	#menu-bar #menu-icon:visited{ color: white; }
 	#menu-bar #menu-icon i{ vertical-align: middle; }
@@ -172,6 +173,11 @@ ul {
 }
 
 @media screen and (min-width:801px){
+
+	#background{
+		width: 100%;
+		height: auto;
+	}
 
 	/* HEADER */
 	ul#navigation {
