@@ -56,21 +56,6 @@ ul {
 	width:100%;
 }
 
-/** BACKGROUND **/
-#background{
-  min-width: 100%;
-  min-height: 100%;
-  max-width: initial!important;
-  max-height: initial!important;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1997;
-}
-
 @media screen and (max-width:800px){
 	#navigation { 
 		display: none;
@@ -221,7 +206,6 @@ ul {
 
 	ul#navigation li a img:hover { color: grey; }
 
-
 	ul.sub_navigation {
 		position:absolute;
 		display:none;
@@ -240,10 +224,12 @@ ul {
 		width: 100%;
 		height: 700px;
 		/*display:inline-block;*/
-		position: absolute;
+		position: fixed;
 		top: 50%;
-		-ms-transform:translateY(-50%);
 		-webkit-transform:translateY(-50%);
+		-moz-transform:translateY(-50%);
+		-o-transform:translateY(-50%);
+		-ms-transform:translateY(-50%);
 		transform:translateY(-50%);
 		padding-top: 45px;
 	}
@@ -264,7 +250,7 @@ ul {
 		position:relative;
 		left:30px;
 		top:0;
-		list-style:none;
+		/*list-style:none;*/
 		margin:0;
 		padding:0;  
 		height:100%;
