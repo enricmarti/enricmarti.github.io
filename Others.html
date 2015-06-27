@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+		<title>Enric Marti</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css" media="screen">
+		<link rel="stylesheet" href="font-awesome-4.3.0/css/font-awesome.min.css">
+		<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+		<link rel="icon" type="image/png" href="favicon_16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="favicon_32.png" sizes="32x32">
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<script type="text/javascript" src="js/jquery.js"></script>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	function sliderWidth(n){
+		var width = 0;
+		for ( var i = 0; i <= n; i++ )
+			width += $('#slides li').eq(i).outerWidth() + parseInt($('#slides li').eq(i).css("marginRight"));
+		return width;
+	}
+	
+	var Nmax = $('#slides ul li').length - 1;
+    var N = 0;
+	var windowHeight = $(window).height();
+	var windowWidth = $(window).width();
+	var sliding = false;
+
+	$(window).load(function() {
+		if( $(window).width() > 800 )
+			$('#slides ul').css({'width':sliderWidth(Nmax)});
+	});
+	
+	$( window ).resize(function() {
+		if( $(window).width() > 800 && (($(window).height() <= 745 && windowHeight > 745) || ($(window).height() > 745 && windowHeight <= 745)) )
+		{
+ 			$('#slides ul').css({'left': 30 - sliderWidth(N-1)}); 
+			$('#slides ul').css({'width':sliderWidth(Nmax)});
+		}
+		if( $(window).width() <= 800 && windowWidth > 800 )
+		{
+			$('#slides ul').css({'width':"100%"});	
+			$('#navigation').css({display:"none"});				
+		}
+		else if( $(window).width() > 800 && windowWidth <= 800 )
+		{
+			$('#slides ul').css({'width':sliderWidth(Nmax)});
+			$('#navigation').css({display:"inline-block"});	
+			$('#menu-bar #menu-icon').css({color:"white"});
+			menuOpened = false;
+		}
+		windowHeight = $(window).height();
+		windowWidth = $(window).width();
+	})
+	
+	function slideGalleryToPreviousImage(){
+		if( !sliding && N > 0 )
+		{
+			sliding = true;
+			N = N - 1;
+			var next_width = $('#slides li').eq(N).outerWidth();
+			var img_margin = parseInt($('#slides li').eq(N).css("marginRight"))
+			
+			if( N == 0 )
+				$("#prev").fadeOut("slow");
+			else if( N == Nmax -1 )
+				$("#next").fadeIn("slow");	
+
+			var left_value = parseInt($('#slides ul').css('left')) + next_width + img_margin;
+     
+			$('#slides ul').animate({'left' : left_value}, 300,function(){    
+				sliding = false;
+			});
+         
+		}   
+		return false;
+	}
+	function slideGalleryToNextImage(){
+		if( !sliding && N < Nmax )
+		{
+			sliding = true;
+			N = N + 1;
+			var prev_width = $('#slides li').eq(N-1).outerWidth();
+			var img_margin = parseInt($('#slides li').eq(N).css("marginRight"))
+			
+			if( N == Nmax )
+				$("#next").fadeOut("slow");
+			else if ( N == 1 )
+				$("#prev").fadeIn("slow");
+
+			var left_value = parseInt($('#slides ul').css('left')) - prev_width - img_margin;
+
+			$('#slides ul').animate({'left' : left_value}, 300, function () {
+		 		sliding = false;  
+			});
+        }        
+
+        return false;   
+	}
+	
+	$(window).bind('mousewheel DOMMouseScroll', function(event){
+		if( $(window).width() >= 801 )
+		{
+			if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0)
+				slideGalleryToPreviousImage();
+			else
+				slideGalleryToNextImage(); 
+		}
+	});
+    $('#prev').click( slideGalleryToPreviousImage );
+    $('#next').click( slideGalleryToNextImage );        
+    
+    $('#carousel').hover( function(){
+		if( N != Nmax )
+			$('#next').fadeIn("slow");
+		if( N != 0 )
+			$('#prev').fadeIn("slow");
+    }, function(){
+        $('#next').fadeOut("slow");
+		$('#prev').fadeOut("slow");
+    });
+        
+});
+</script>
+
+<script type="text/javascript">
+var menuOpened = false;
+$(document).ready(function() {
+	var openedDropdown;
+	 
+	$('#menu-icon').click( function(){
+		if( !menuOpened )
+		{
+			$('#navigation').css({display:"inline-block"});
+			$('#menu-bar #menu-icon').css({color:"grey"});
+			menuOpened = true;
+		}
+		else
+		{
+			$('#navigation').css({display:"none"});
+			$('#menu-bar #menu-icon').css({color:"white"});
+			menuOpened = false;		
+		}
+	});
+
+	$('.dropdown').hover(function() {
+		//if( $(window).width() > 800 )
+			$(this).find('.sub_navigation').slideToggle().stop(true,true); 
+	});
+	
+	$('.dropdown').click( function(){
+		/*if( $(window).width() <= 800 )
+		{
+			$(this).find('.sub_navigation').slideToggle().stop(true,true); 
+			openedDropdown = $(this);
+		}*/
+	});
+	
+	$(document).on('click', function(event) {
+		if (!$(event.target).closest('#menu-bar').length && menuOpened)
+		{
+			$('#navigation').css({display:"none"});
+			$('#menu-bar #menu-icon').css({color:"white"});
+			menuOpened = false;
+		}
+	});
+	
+});
+</script>
+
+</head>
+
+<body>
+	<div id="menu-bar">
+		<span class="logo">
+			<a href="index.html"><img src="img/LogoEnric.svg"></img></a>
+		</span>
+		<a href="#" id="menu-icon"><i class="fa fa-bars fa-2x"></i></a>
+		<ul id="navigation">
+			<li class="dropdown"><a href="#">Degree final project</a>
+				<ul class="sub_navigation">
+					<li><a href="Campaign.html">Campaign</a></li>
+					<li><a href="Lookbook.html">Lookbook</a></li>
+					<li><a href="Making-Off.html">Making Off</a></li>
+					<li><a href="Full-Collection.html">Full Collection</a></li>
+					<li><a href="Inspirations.html">Inspirations</a></li>
+					<li><a href="Thesis.html">Thesis</a></li>
+				</ul>		
+			</li>
+			<li class="dropdown"><a href="#">Projects</a>
+				<ul class="sub_navigation">
+					<li><a href="Reticular-Organism.html">Reticular organism</a></li>
+					<li><a href="The-Maker.html">The maker</a></li>
+					<li><a href="VAZ.html">VA'Z</a></li>
+					<li><a href="Others.html">Others</a></li>
+				</ul>
+			</li>
+			<li><a href="About.html">About</a></li>
+			<li><a href="Contact.html">Contact</a></li>
+			<li><a href="https://instagram.com/enricmarti_/"  target="_blank"><i class="fa fa-instagram fa-2x"></i></a></li>
+			<li><a href="http://enricmarti.tumblr.com/"  target="_blank"><i class="fa fa-tumblr-square fa-2x"></i></a></li>
+		</ul>
+	</div>
+
+<!--<div id="video-wrapper">
+	<iframe src="https://player.vimeo.com/video/120481551?autoplay=1" frameborder="0" id="full-video" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>-->
+
+<div id="content-wrapper">
+
+	<div id="carousel">
+		<a href="#" id="prev"><img class="arrow" src="img/prev.jpg" alt="Prev Arrow"></img></a>
+		<a href="#" id="next"><img class="arrow" src="img/next.jpg" alt="Prev Arrow"></img></a>
+		<div id="slides"> 
+			<ul>
+				<li><img src="img/Others/1.jpg" alt="Others Image" ></img></li>
+				<li><img src="img/Others/2.jpg" alt="Others Image" ></img></li>
+				<li><img src="img/Others/3.jpg" alt="Others Image" ></img></li>
+				<li><img src="img/Others/4.jpg" alt="Others Image" ></img></li>
+				<li><img src="img/Others/5.jpg" alt="Others Image" ></img></li>
+				<li><img src="img/Others/6.jpg" alt="Others Image" ></img></li>
+				<li><img src="img/Others/7.jpg" alt="Others Image" ></img></li>
+				<li><img src="img/Others/8.jpg" alt="Others Image" ></img></li>
+				<li><img src="img/Others/9.jpg" alt="Others Image" ></img></li>
+				<li><img src="img/Others/10.jpg" alt="Others Image" ></img></li>
+				<li><img src="img/Others/11.jpg" alt="Others Image" ></img></li>
+				<li><img src="img/Others/12.jpg" alt="Others Image" ></img></li>
+				<li><img src="img/Others/13.jpg" alt="Others Image" ></img></li>
+				<li><img src="img/Others/14.jpg" alt="Others Image" ></img></li>
+				<li><img src="img/Others/15.jpg" alt="Others Image" ></img></li>
+				<li><img src="img/Others/16.jpg" alt="Others Image" ></img></li>
+			</ul>
+		</div>
+	</div>
+	
+</div>
+
+</body>
+
+</html>

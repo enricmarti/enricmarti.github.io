@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+		<title>Enric Marti</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="css/making-off-style.css" media="screen">
+		<link rel="stylesheet" href="font-awesome-4.3.0/css/font-awesome.min.css">
+		<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+		<link rel="icon" type="image/png" href="favicon_16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="favicon_32.png" sizes="32x32">
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<script type="text/javascript" src="js/jquery.js"></script>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+
+<script type="text/javascript">
+$(document).ready(function() {	
+	var windowHeight = $(window).height();
+	var windowWidth = $(window).width();
+
+	$( window ).resize(function() {
+		if( $(window).width() <= 800 && windowWidth > 800 )
+		{
+			$('#navigation').css({display:"none"});				
+		}
+		else if( $(window).width() > 800 && windowWidth <= 800 )
+		{
+			$('#navigation').css({display:"inline-block"});	
+			$('#menu-bar #menu-icon').css({color:"white"});
+			menuOpened = false;
+		}
+		windowHeight = $(window).height();
+		windowWidth = $(window).width();
+	})          
+});
+</script>
+
+<script type="text/javascript">
+var menuOpened = false;
+$(document).ready(function() {
+	var openedDropdown;
+	 
+	$('#menu-icon').click( function(){
+		if( !menuOpened )
+		{
+			$('#navigation').css({display:"inline-block"});
+			$('#menu-bar #menu-icon').css({color:"grey"});
+			menuOpened = true;
+		}
+		else
+		{
+			$('#navigation').css({display:"none"});
+			$('#menu-bar #menu-icon').css({color:"white"});
+			menuOpened = false;		
+		}
+	});
+
+	$('.dropdown').hover(function() {
+		//if( $(window).width() > 800 )
+			$(this).find('.sub_navigation').slideToggle().stop(true,true); 
+	});
+	
+	$('.dropdown').click( function(){
+		/*if( $(window).width() <= 800 )
+		{
+			$(this).find('.sub_navigation').slideToggle().stop(true,true); 
+			openedDropdown = $(this);
+		}*/
+	});
+	
+	$(document).on('click', function(event) {
+		if (!$(event.target).closest('#menu-bar').length && menuOpened)
+		{
+			$('#navigation').css({display:"none"});
+			$('#menu-bar #menu-icon').css({color:"white"});
+			menuOpened = false;
+		}
+	});
+	
+});
+</script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	$('#bgvid').click( function(){
+		console.log("caca");
+		if ($(this).get(0).paused) 
+		  $(this).get(0).play(); 
+		else 
+		  $(this).get(0).pause(); 
+	}); 
+});
+</script>
+
+</head>
+
+<body>
+	<div id="menu-bar">
+		<span class="logo">
+			<a href="index.html"><img src="img/LogoEnric.svg"></img></a>
+		</span>
+		<a href="#" id="menu-icon"><i class="fa fa-bars fa-2x"></i></a>
+		<ul id="navigation">
+			<li class="dropdown"><a href="#">Degree final project</a>
+				<ul class="sub_navigation">
+					<li><a href="Campaign.html">Campaign</a></li>
+					<li><a href="Lookbook.html">Lookbook</a></li>
+					<li><a href="Making-Off.html">Making Off</a></li>
+					<li><a href="Full-Collection.html">Full Collection</a></li>
+					<li><a href="Inspirations.html">Inspirations</a></li>
+					<li><a href="Thesis.html">Thesis</a></li>
+				</ul>		
+			</li>
+			<li class="dropdown"><a href="#">Projects</a>
+				<ul class="sub_navigation">
+					<li><a href="Reticular-Organism.html">Reticular organism</a></li>
+					<li><a href="The-Maker.html">The maker</a></li>
+					<li><a href="VAZ.html">VA'Z</a></li>
+					<li><a href="Others.html">Others</a></li>
+				</ul>
+			</li>
+			<li><a href="About.html">About</a></li>
+			<li><a href="Contact.html">Contact</a></li>
+			<li><a href="https://instagram.com/enricmarti_/"  target="_blank"><i class="fa fa-instagram fa-2x"></i></a></li>
+			<li><a href="http://enricmarti.tumblr.com/"  target="_blank"><i class="fa fa-tumblr-square fa-2x"></i></a></li>
+		</ul>
+	</div>
+
+	<div id="content-wrapper">
+		<video autoplay loop id="bgvid">
+			<source src="video/PFG-Making-Off.mp4" type="video/mp4">
+		</video>
+	</div>
+
+</body>
+
+</html>

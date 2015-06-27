@@ -36,7 +36,6 @@ ul {
 	padding:0;
 	list-style-type:none;
 }
-
  
 #video-wrapper{
 	width: 100%;
@@ -54,6 +53,12 @@ ul {
 	padding:0;
 	height:100%;
 	width:100%;
+}
+
+#copyright{
+	text-align: center;
+	font-weight: 300;
+	font-size: 12px;
 }
 
 @media screen and (max-width:800px){

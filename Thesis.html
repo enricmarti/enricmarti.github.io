@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+		<title>Enric Marti</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="css/thesis-style.css" media="screen">
+		<link rel="stylesheet" href="font-awesome-4.3.0/css/font-awesome.min.css">
+		<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+		<link rel="icon" type="image/png" href="favicon_16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="favicon_32.png" sizes="32x32">
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<script type="text/javascript" src="js/jquery.js"></script>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+
+<script type="text/javascript">
+$(document).ready(function() {	
+	var windowHeight = $(window).height();
+	var windowWidth = $(window).width();
+
+	$( window ).resize(function() {
+		if( $(window).width() <= 800 && windowWidth > 800 )
+		{
+			$('#navigation').css({display:"none"});				
+		}
+		else if( $(window).width() > 800 && windowWidth <= 800 )
+		{
+			$('#navigation').css({display:"inline-block"});	
+			$('#menu-bar #menu-icon').css({color:"white"});
+			menuOpened = false;
+		}
+		windowHeight = $(window).height();
+		windowWidth = $(window).width();
+	})          
+});
+</script>
+
+<script type="text/javascript">
+var menuOpened = false;
+$(document).ready(function() {
+	var openedDropdown;
+	 
+	$('#menu-icon').click( function(){
+		if( !menuOpened )
+		{
+			$('#navigation').css({display:"inline-block"});
+			$('#menu-bar #menu-icon').css({color:"grey"});
+			menuOpened = true;
+		}
+		else
+		{
+			$('#navigation').css({display:"none"});
+			$('#menu-bar #menu-icon').css({color:"white"});
+			menuOpened = false;		
+		}
+	});
+
+	$('.dropdown').hover(function() {
+		//if( $(window).width() > 800 )
+			$(this).find('.sub_navigation').slideToggle().stop(true,true); 
+	});
+	
+	$('.dropdown').click( function(){
+		/*if( $(window).width() <= 800 )
+		{
+			$(this).find('.sub_navigation').slideToggle().stop(true,true); 
+			openedDropdown = $(this);
+		}*/
+	});
+	
+	$(document).on('click', function(event) {
+		if (!$(event.target).closest('#menu-bar').length && menuOpened)
+		{
+			$('#navigation').css({display:"none"});
+			$('#menu-bar #menu-icon').css({color:"white"});
+			menuOpened = false;
+		}
+	});
+	
+});
+</script>
+
+</head>
+
+<body>
+	<div id="menu-bar">
+		<span class="logo">
+			<a href="index.html"><img src="img/LogoEnric.svg"></img></a>
+		</span>
+		<a href="#" id="menu-icon"><i class="fa fa-bars fa-2x"></i></a>
+		<ul id="navigation">
+			<li class="dropdown"><a href="#">Degree final project</a>
+				<ul class="sub_navigation">
+					<li><a href="Campaign.html">Campaign</a></li>
+					<li><a href="Lookbook.html">Lookbook</a></li>
+					<li><a href="Making-Off.html">Making Off</a></li>
+					<li><a href="Full-Collection.html">Full Collection</a></li>
+					<li><a href="Inspirations.html">Inspirations</a></li>
+					<li><a href="Thesis.html">Thesis</a></li>
+				</ul>		
+			</li>
+			<li class="dropdown"><a href="#">Projects</a>
+				<ul class="sub_navigation">
+					<li><a href="Reticular-Organism.html">Reticular organism</a></li>
+					<li><a href="The-Maker.html">The maker</a></li>
+					<li><a href="VAZ.html">VA'Z</a></li>
+					<li><a href="Others.html">Others</a></li>
+				</ul>
+			</li>
+			<li><a href="About.html">About</a></li>
+			<li><a href="Contact.html">Contact</a></li>
+			<li><a href="https://instagram.com/enricmarti_/"  target="_blank"><i class="fa fa-instagram fa-2x"></i></a></li>
+			<li><a href="http://enricmarti.tumblr.com/"  target="_blank"><i class="fa fa-tumblr-square fa-2x"></i></a></li>
+		</ul>
+	</div>
+
+<div id="wrapper">
+	<div id="left-block"><img id="enric-image" src="img/thesis.png" alt="Enric Marti image"></img>
+	</div><div id="right-block">
+	<h1>CELEBRITY WORSHIP - A sociological study about celebrity worship as a contemporary religion</h1>
+	<p>
+	Since Friedrich Nietzsche’s death-of-God decree, it's been identified a general condition in which cultural life has been losing adherence to objective or transcendent standards, permitting the growing popularity of forms of mysticism that rise from indefinite religious emotion. As the definition of religion has been widely debated over the years, various aspect of celebrity worship seem to be meaningful to people in ways that suggest a kind of religious parallel. With the weakening of traditional faith, worship has bled into every specialized sector of modern culture that speak to the breadth and depth of contemporary religious environments, making no surprise that religious imagery and themes are surfacing more and more in the anti-establishment worlds of art and entertainment. We now find meaning where we may not otherwise have looked: in the meaningless. 
+	<br><br>
+	So, celebrities represent subject positions that audiences can adopt or adapt in their formation of social identities, and this constitutes a change in the way cultural meanings are generated as the celebrity becomes a key site of attention and personal aspiration. At its heart, the celebrity fact generates para-social interactions, which are instances where worshippers respond to what we think of as real emotional attachments with figures only knew through their representations in the media, so the investment with phantasmal projections of need-fulfillment becomes real. Therefore, unable to confront naked existence in the absence of a structured traditional God, individuals are left to confront the limitations, adversities, and injustices of worldly existence by themselves and without hope of reconciliation.
+	</p>
+	<a href="doc/EnricMarti_CelebrityWorship_2015.pdf" target="_blank"><i class="fa fa-file-text-o fa-2x"></i><div id="download">Download thesis</div></a>
+	</div>
+</div>
+
+</body>
+
+</html>
