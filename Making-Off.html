@@ -12,88 +12,18 @@
 		<link rel="icon" type="image/png" href="favicon_32.png" sizes="32x32">
 		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/navigation-bar.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#bgvid').click( function(){
+					if ($(this).get(0).paused) 
+					  $(this).get(0).play(); 
+					else 
+					  $(this).get(0).pause(); 
+				}); 
+			});
+		</script>
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
-
-<script type="text/javascript">
-$(document).ready(function() {	
-	var windowHeight = $(window).height();
-	var windowWidth = $(window).width();
-
-	$( window ).resize(function() {
-		if( $(window).width() <= 800 && windowWidth > 800 )
-		{
-			$('#navigation').css({display:"none"});				
-		}
-		else if( $(window).width() > 800 && windowWidth <= 800 )
-		{
-			$('#navigation').css({display:"inline-block"});	
-			$('#menu-bar #menu-icon').css({color:"white"});
-			menuOpened = false;
-		}
-		windowHeight = $(window).height();
-		windowWidth = $(window).width();
-	})          
-});
-</script>
-
-<script type="text/javascript">
-var menuOpened = false;
-$(document).ready(function() {
-	var openedDropdown;
-	 
-	$('#menu-icon').click( function(){
-		if( !menuOpened )
-		{
-			$('#navigation').css({display:"inline-block"});
-			$('#menu-bar #menu-icon').css({color:"grey"});
-			menuOpened = true;
-		}
-		else
-		{
-			$('#navigation').css({display:"none"});
-			$('#menu-bar #menu-icon').css({color:"white"});
-			menuOpened = false;		
-		}
-	});
-
-	$('.dropdown').hover(function() {
-		//if( $(window).width() > 800 )
-			$(this).find('.sub_navigation').slideToggle().stop(true,true); 
-	});
-	
-	$('.dropdown').click( function(){
-		/*if( $(window).width() <= 800 )
-		{
-			$(this).find('.sub_navigation').slideToggle().stop(true,true); 
-			openedDropdown = $(this);
-		}*/
-	});
-	
-	$(document).on('click', function(event) {
-		if (!$(event.target).closest('#menu-bar').length && menuOpened)
-		{
-			$('#navigation').css({display:"none"});
-			$('#menu-bar #menu-icon').css({color:"white"});
-			menuOpened = false;
-		}
-	});
-	
-});
-</script>
-
-<script type="text/javascript">
-
-$(document).ready(function() {
-	$('#bgvid').click( function(){
-		console.log("caca");
-		if ($(this).get(0).paused) 
-		  $(this).get(0).play(); 
-		else 
-		  $(this).get(0).pause(); 
-	}); 
-});
-</script>
-
 </head>
 
 <body>
@@ -130,7 +60,7 @@ $(document).ready(function() {
 
 	<div id="content-wrapper">
 		<video autoplay loop id="bgvid">
-			<source src="video/PFG-Making-Off.mp4" type="video/mp4">
+			<source src="video/FormatFactoryPFG-Making-Off.mp4" type="video/mp4">
 		</video>
 	</div>
 
