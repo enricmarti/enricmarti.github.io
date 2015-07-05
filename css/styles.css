@@ -239,8 +239,13 @@ ul {
 		padding-top: 45px;
 	}
 
-	@media screen and (max-height:745px){
+	/* carrousel + copyright */
+	@media screen and (max-height:783px){
 		#carousel{ height: 600px; }
+	}
+	
+	@media screen and (max-height:683px){
+		#carousel{ height: 500px; }
 	}
 
 	#slides {
