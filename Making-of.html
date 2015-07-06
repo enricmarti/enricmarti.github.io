@@ -16,6 +16,12 @@
 		<script type="text/javascript" src="js/navigation-bar.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
+				if( $(window).width() <= 800 )
+				{
+					$('#bgvid').get(0).autoplay = false;
+					$('#bgvid').get(0).controls = true;
+				}
+					
 				$('#bgvid').click( function(){
 					if ($(this).get(0).paused) 
 					  $(this).get(0).play(); 
@@ -25,7 +31,7 @@
 			});
 			function OnVideoLoaded() {
 				$('.spinner').hide(0);
-				$('#bgvid').get(0).play()
+				//$('#bgvid').get(0).play()
 			}	
 		</script>
 		<!-- GOOGLE ANALYTICS -->
