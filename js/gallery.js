@@ -22,7 +22,7 @@ $(document).ready(function() {
 		if( $(window).width() > 800 && (($(window).height() <= 783 && windowHeight > 783) || ($(window).height() > 783 && windowHeight <= 783)
 				|| ($(window).height() > 683 && windowHeight <= 683) || ($(window).height() <= 683 && windowHeight > 683)  ) )
 		{
- 			$('#slides ul').css({'left': 30 - sliderWidth(N-1)}); 
+ 			$('#slides ul').css({'left': 10 - sliderWidth(N-1)}); 
 			$('#slides ul').css({'width':sliderWidth(Nmax)});
 		}
 		
