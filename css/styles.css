@@ -11,21 +11,17 @@ html, body {
 	width:100%;
 	position:fixed;
 	z-index:100;
-	background-color:black;
 	height: 45px;
-	text-align: right;
 }
 
-#menu-bar .logo{
-	float: left;
+.logo{
+	position: fixed;
 	line-height: 45px;
-	margin-top:auto;
-	margin-bottom:auto;
-	height: 100%;
-	margin-left: 30px;
+	left: 30px;
+	z-index: 1000;
 }
 
-#menu-bar .logo img{
+.logo img{
 	height: 20px;
 	vertical-align: middle;
 	margin-bottom: 3px;
@@ -62,11 +58,17 @@ ul {
 }
 
 @media screen and (max-width:800px){
+	#menu-bar{
+		background-color: white;
+		border-bottom: 1px solid #eee;
+	}
+
 	#navigation { 
-		display: none;
-		/*display: inline-block;*/
+		display: block;
+		padding-top: 45px;
 		width: 100%;
-		background-color: black;
+		background-color: white;
+		border-bottom: 1px solid #eee;
 		text-align: left;
 	}
 	
@@ -85,7 +87,7 @@ ul {
 		display:inline-block;
 		line-height: 30px;
 		height:100%;
-		color: white;
+		color: black;
 		text-decoration: none;
 	}
 	
@@ -99,26 +101,14 @@ ul {
 
 	ul.sub_navigation {
 		display:none;
-		background-color:black;
+		background-color: white;
+		border-left: 1px solid grey;
 	}
 	 
 	ul.sub_navigation li {
 		clear:both;
 		margin-right: 0px;
 	}
-	
-	/*----------*/
-	#menu-bar #menu-icon{
-		float:right;
-		line-height: 45px;
-		margin-top:auto;
-		margin-bottom:auto;
-		margin-right: 20px;
-		color: white;
-	}
-	#menu-bar #menu-icon:visited{ color: white; }
-	#menu-bar #menu-icon i{ vertical-align: middle; }
-	/*#menu-bar #menu-icon img{ height: 30px; vertical-align: middle; color: white; }*/
 	
 	#carousel {
 		width: 100%;
@@ -171,7 +161,13 @@ ul {
 
 	/* HEADER */
 	ul#navigation {
-		display:inline-block;
+		display: block;
+		background-color: white;
+		height:45px;
+		overflow: visible;
+		width: 100%;
+		border-bottom: 1px solid #eee;
+		padding-left: 200px;
 	}
 	 
 	ul#navigation li  {
@@ -198,36 +194,39 @@ ul {
 		display:inline-block;
 		line-height: 45px;
 		height:100%;
-		color: white;
+		color: black;
 		text-decoration: none;
 	}
 
 	ul#navigation li a:hover
 	{
 		color: grey;
-		border-bottom: 5px solid yellow;
+		border-bottom: 3px solid black;
 	}
+	/** TITOL DESPLEGABLE **/
 	ul#navigation .dropdown a:hover{ border-bottom: 0px; }
+	/** DESPLEGABLE **/
+	ul#navigation .dropdown .sub_navigation a:hover{ border-bottom: 0px; }
 
 	ul#navigation li a img:hover { color: grey; }
 
 	ul.sub_navigation {
 		position:absolute;
 		display:none;
-		background-color:black;
-		border-bottom: 5px solid #e5ff07;
+		background-color: white;
+		border-bottom: 3px solid black;
+		border-left: 1px solid #eee;
+		border-right: 1px solid #eee;
 	}
 	 
 	ul.sub_navigation li {
 		clear:both;
 		margin-right: 0px;
 	}
-	 
-	#menu-bar #menu-icon{ display: none; }
 
 	#carousel {
 		width: 100%;
-		height: 700px;
+		height: 850px;
 		/*display:inline-block;*/
 		position: fixed;
 		top: 50%;
@@ -240,12 +239,12 @@ ul {
 	}
 
 	/* carrousel + copyright */
-	@media screen and (max-height:783px){
-		#carousel{ height: 600px; }
+	@media screen and (max-height:883px){
+		#carousel{ height: 750px; }
 	}
 	
-	@media screen and (max-height:683px){
-		#carousel{ height: 500px; }
+	@media screen and (max-height:783px){
+		#carousel{ height: 650px; }
 	}
 
 	#slides {
@@ -258,7 +257,7 @@ ul {
 	/* remove the list styles, width : item width * total items */    
 	#slides ul {
 		position:relative;
-		left:30px;
+		left:10px;
 		top:0;
 		/*list-style:none;*/
 		margin:0;
@@ -269,7 +268,7 @@ ul {
 
 	#slides li {
 		height:100%; 
-		margin-right: 30px;
+		margin-right: 10px;
 		float:left;
 	}
 	#slides li img {

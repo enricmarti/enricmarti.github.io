@@ -3,17 +3,35 @@ $(document).ready(function() {
 	var windowHeight = $(window).height();
 	var windowWidth = $(window).width();
 
-	$('#menu-icon').click( function(){
-		$('#navigation').toggle(0, function(){
-			if($('#navigation').is(':visible'))
-			{
-				$('#navigation').css('display','inline-block');
-				$('#menu-bar #menu-icon').css({color:"grey"});
-			}
-			else
-				$('#menu-bar #menu-icon').css({color:"white"});
-		});
+	/** MENU DESPLEGABLE **/
+	var toggle = document.querySelector(".c-menu");
+	if(toggle)
+		toggle.addEventListener( "click", function(e) {
+	  		toggleMenu(e);
+	  	});
+	
+	$('.menu-label').click( function(e){
+		toggleMenu(e);
 	});
+
+	function toggleMenu(e)
+	{
+	    e.preventDefault();
+	    var menuIcon = $(".c-menu")[0];
+	    (menuIcon.classList.contains("is-active") === true) ? menuIcon.classList.remove("is-active") : menuIcon.classList.add("is-active");
+	    $('#navigation').slideToggle(400);
+	    $('.menu-label').fadeToggle(400);
+	}
+
+	function hideMenu(event)
+	{
+	    event.preventDefault();
+	    var menuIcon = $(".c-menu")[0];
+		menuIcon.classList.remove("is-active");
+	    $('#navigation').slideUp(400);
+	    $('.menu-label').fadeIn(400);
+	}
+	/** ------------------------------- **/
 
 	$('.dropdown').hover(function() {
 		if( $(window).width() > 800 )
@@ -37,23 +55,22 @@ $(document).ready(function() {
 	});
 	
 	$(document).on('click', function(event) {
-		if ( $(window).width() <= 800 && !$(event.target).closest('#menu-bar').length && $('#navigation').is(':visible') )
-		{
-			$('#navigation').css({display:"none"});
-			$('#menu-bar #menu-icon').css({color:"white"});
-			menuOpened = false;
-		}
+		if (!$(event.target).closest('#header-container').length) {
+			//Hide menu if it is open
+			if($('#navigation').is(':visible'))
+				hideMenu(event);
+  		}
 	});
-	
+
 	$( window ).resize(function() {
 		if( $(window).width() <= 800 && windowWidth > 800 )
 		{
-			$('#navigation').hide(0);			
+			//$('#navigation').hide(0);			
 		}
 		else if( $(window).width() > 800 && windowWidth <= 800 )
 		{
-			$('#navigation').css({display:"inline-block"});	
-			$('#menu-bar #menu-icon').css({color:"white"});
+			//$('#navigation').css({display:"inline-block"});	
+			//$('#menu-bar').css({'background-color':""});
 			$( ".dropdown" ).each(function(){ $(this).children('.sub_navigation').hide(0); });
 		}
 		

@@ -13,6 +13,7 @@
 		<!-- -->
 		<link rel="stylesheet" type="text/css" href="css/styles.css" media="screen">
 		<link rel="stylesheet" type="text/css" href="css/home-style.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="css/menu-icon.css" media="screen">
 		<link rel="stylesheet" href="font-awesome-4.3.0/css/font-awesome.min.css">
 		<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
 		<link rel="icon" type="image/png" href="favicon_16.png" sizes="16x16">
@@ -35,34 +36,41 @@
 </head>
 
 <body>
-	<div id="menu-bar">
-		<a href="#" id="menu-icon"><i class="fa fa-bars fa-2x"></i></a>
-		<ul id="navigation">
-			<li class="dropdown"><a href="#">Degree final project</a>
-				<ul class="sub_navigation">
-					<li><a href="Lookbook.html">Lookbook</a></li>
-					<li><a href="Campaign.html">Campaign</a></li>
-					<li><a href="Making-of.html">Making-of</a></li>
-					<li><a href="Inspirations.html">Inspirations</a></li>
-					<li><a href="Thesis.html">Thesis</a></li>
-				</ul>		
-			</li>
-			<li class="dropdown"><a href="#">Projects</a>
-				<ul class="sub_navigation">
-					<li><a href="Reticular-Organism.html">Reticular organism</a></li>
-					<li><a href="The-Maker.html">The maker</a></li>
-					<li><a href="VAZ.html">VA'Z</a></li>
-					<li><a href="Others.html">Others</a></li>
-				</ul>
-			</li>
-			<li><a href="About.html">About</a></li>
-			<li><a href="Contact.html">Contact</a></li>
-			<li><a href="https://instagram.com/enricmarti_/"  target="_blank"><i class="fa fa-instagram fa-2x"></i></a></li>
-		</ul>
+	<div id="header-container">
+		<span class="logo">
+			<a href="index.html"><img src="img/LogoEnric.svg"></img></a>
+		</span>
+		<label class="menu-label">MENU</label>
+		<button class="c-menu c-menu--htx">
+	 		<span>menu</span>
+		</button>
+		<div id="menu-bar">
+			<ul id="navigation" style="display:none">
+				<li class="dropdown"><a href="#">Degree final project</a>
+					<ul class="sub_navigation">
+						<li><a href="Lookbook.html">Lookbook</a></li>
+						<li><a href="Campaign.html">Campaign</a></li>
+						<li><a href="Making-of.html">Making-of</a></li>
+						<li><a href="Inspirations.html">Inspirations</a></li>
+						<li><a href="Thesis.html">Thesis</a></li>
+					</ul>		
+				</li>
+				<li class="dropdown"><a href="#">Projects</a>
+					<ul class="sub_navigation">
+						<li><a href="Reticular-Organism.html">Reticular organism</a></li>
+						<li><a href="The-Maker.html">The maker</a></li>
+						<li><a href="VAZ.html">VA'Z</a></li>
+						<li><a href="Others.html">Others</a></li>
+					</ul>
+				</li>
+				<li><a href="About.html">About</a></li>
+				<li><a href="Contact.html">Contact</a></li>
+				<li><a href="https://instagram.com/enricmarti_/"  target="_blank"><i class="fa fa-instagram fa-2x"></i></a></li>
+			</ul>
+		</div>
 	</div>
 
 	<div id="content-wrapper">
-		<img id="logo-home" src="img/LogoEnric2.svg"></img>
 	</div>
 
 </body>

@@ -1,0 +1,110 @@
+.c-menu {
+  display: block;
+  position: fixed;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 45px;
+  height: 45px;
+  font-size: 0;
+  text-indent: -9999px;
+  right: 20px;
+  z-index: 1000;
+  /*appearance: none;*/
+  box-shadow: none;
+  /*border-radius: none;*/
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+  background-color: transparent;
+}
+
+.c-menu:focus {
+  outline: none;
+}
+
+.c-menu span {
+  display: block;
+  position: absolute;
+  top: 21px;
+  left: 8px;
+  right: 8px;
+  height: 3px;
+  background: black;
+}
+
+.c-menu span::before,
+.c-menu span::after {
+  position: absolute;
+  display: block;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: black;
+  content: "";
+}
+
+.c-menu span::before {
+  top: -9px;
+}
+
+.c-menu span::after {
+  bottom: -9px;
+}
+
+/*.c-menu--htx {
+  background-color: #ff3264;
+}*/
+
+.c-menu--htx span {
+  transition: background 0s 0.3s;
+}
+
+.c-menu--htx span::before,
+.c-menu--htx span::after {
+  transition-duration: 0.3s, 0.3s;
+  transition-delay: 0.3s, 0s;
+}
+
+.c-menu--htx span::before {
+  transition-property: top, transform;
+}
+
+.c-menu--htx span::after {
+  transition-property: bottom, transform;
+}
+
+/* active state, i.e. menu open */
+/*.c-menu--htx.is-active {
+  background-color: #cb0032;
+}*/
+
+.c-menu--htx.is-active span {
+  background: none;
+}
+
+.c-menu--htx.is-active span::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.c-menu--htx.is-active span::after {
+  bottom: 0;
+  transform: rotate(-45deg);
+}
+
+.c-menu--htx.is-active span::before,
+.c-menu--htx.is-active span::after {
+  transition-delay: 0s, 0.3s;
+}
+
+.menu-label{
+  position: fixed;
+  cursor: pointer;
+  z-index: 1000;
+  right: 65px;
+  line-height: 45px;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
