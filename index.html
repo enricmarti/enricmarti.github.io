@@ -21,6 +21,7 @@
 		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/navigation-bar.js"></script>
+		<script type="text/javascript" src="js/directory_files.js"></script>
 		<!-- GOOGLE ANALYTICS -->
 		<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -32,6 +33,60 @@
 		  ga('send', 'pageview');
 		</script>
 		<!-- -->
+		<script>
+			var filesList = [];
+			var currentIndex = 0;
+			var directory = $(window).width() >= 801 ? "img/backgrounds" : "img/backgrounds-mobile";
+			console.log(directory);
+			function myCallback(fileextension, data){
+	        	//List all file names in the page
+		        $(data).find("a:contains(" + fileextension + ")").each(function () {
+		            var filename = this.href.replace(window.location.host, "").replace("http://", "");
+		            filesList.push(filename);
+		        });
+		        currentIndex = Math.floor(Math.random() * filesList.length);
+		        $('#content-wrapper').css({'background-image':"url(../" + directory + filesList[currentIndex] + ")",
+		    		'-webkit-transition' : "background-image 0.1s ease-in-out",
+		    		'transition': "background-image 0.1s ease-in-out"});
+			}
+			RetrieveDirectoryFiles(directory, ".jpg", myCallback);
+
+			function modulus(value,modulo)
+			{
+				return ((value%modulo)+modulo)%modulo;
+			}
+
+			$(window).bind('mousewheel DOMMouseScroll', function(event){
+				if( $(window).width() >= 801 )
+				{
+					if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0)
+						currentIndex = modulus(--currentIndex, filesList.length);
+					else
+						currentIndex = modulus(++currentIndex, filesList.length);
+					console.log(currentIndex);
+					$('#content-wrapper').css({'background-image':"url(../" + directory + filesList[currentIndex] + ")"});
+				}
+			});
+
+			// Transició entre normal - movil del fondo
+			var windowHeight = $(window).height();
+			var windowWidth = $(window).width();	
+			$( window ).resize(function() {
+
+				if( $(window).width() <= 800 && windowWidth > 800 )
+				{
+					directory = "img/backgrounds-mobile";
+					$('#content-wrapper').css({'background-image':"url(../" + directory + filesList[currentIndex] + ")"});
+				}
+				else if( $(window).width() > 800 && windowWidth <= 800 )
+				{
+					directory = "img/backgrounds";
+					$('#content-wrapper').css({'background-image':"url(../" + directory + filesList[currentIndex] + ")"});
+				}
+				windowHeight = $(window).height();
+				windowWidth = $(window).width();
+			})
+		</script>
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
 </head>
 
