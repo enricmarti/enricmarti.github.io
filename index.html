@@ -33,11 +33,24 @@
 		</script>
 		<!-- -->
 		<script>
-			/*var filesList = [];
+			function modulus(value,modulo)
+			{
+				return ((value%modulo)+modulo)%modulo;
+			}
+
+			var filesList = ["/1.jpg","/2.jpg","/3.jpg","/4.jpg"];
 			var currentIndex = 0;
 			var directory = $(window).width() >= 801 ? "img/backgrounds" : "img/backgrounds-mobile";
-			console.log(directory);
-			function myCallback(fileextension, data){
+			currentIndex = Math.floor(Math.random() * filesList.length);
+
+			$(document).ready(function() {
+				$('#content-wrapper').css({'background-image':"url(../" + directory + filesList[currentIndex] + ")",
+		    		'-webkit-transition' : "background-image 0.1s ease-in-out",
+		    		'transition': "background-image 0.1s ease-in-out"});
+			});
+
+
+			/*function myCallback(fileextension, data){
 	        	//List all file names in the page
 		        $(data).find("a:contains(" + fileextension + ")").each(function () {
 		            var filename = this.href.replace(window.location.host, "").replace("http://", "");
@@ -48,12 +61,8 @@
 		    		'-webkit-transition' : "background-image 0.1s ease-in-out",
 		    		'transition': "background-image 0.1s ease-in-out"});
 			}
-			RetrieveDirectoryFiles("../" + directory, ".jpg", myCallback);
+			RetrieveDirectoryFiles("../" + directory, ".jpg", myCallback);*/
 
-			function modulus(value,modulo)
-			{
-				return ((value%modulo)+modulo)%modulo;
-			}
 
 			$(window).bind('mousewheel DOMMouseScroll', function(event){
 				if( $(window).width() >= 801 )
@@ -84,7 +93,7 @@
 				}
 				windowHeight = $(window).height();
 				windowWidth = $(window).width();
-			})*/
+			})
 		</script>
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
 </head>
