@@ -1,3 +1,20 @@
+#fixed-block
+{
+	height: 45px;
+	width: 100%;
+}
+
+#fixed-content
+{
+	height: 100%;
+	width: 100%;
+}
+
+h1
+{
+	margin-top: 0;
+}
+
 h2
 {
 	font-size: 16px;
@@ -18,16 +35,48 @@ h2
 	margin-bottom: 4px;
 }
 
-#left-block
+#right-block
 {
 	font-size: 17px;
 	font-weight: 300;
 	text-align: justify;
 }
 
-#wrapper{ padding-top: 45px; }
+/** PART DE CONTACT **/
+a{
+	color: black;
+	text-decoration: none;
+	font-weight: 400;
+}
+
+#developer{
+	font-size: 12px;
+	font-weight: 300;
+	width: 100%;
+	text-align: center;
+	/*padding-bottom: 10px;*/
+}
+
+h2
+{
+	margin-top: 40px;
+}
+
+i{ vertical-align: middle; display: inline-block;  }
+
+#download{ 
+	font-size: 25px;
+	font-weight: 700;
+	margin-left: 10px;
+	vertical-align: middle;
+	display: inline-block; 
+	text-transform: uppercase;
+	letter-spacing: -2px;
+}
 
 @media screen and (max-width:800px){
+
+	#fixed-content{ height: initial; }
 
 	#left-block
 	{
@@ -57,10 +106,10 @@ h2
 
 	#wrapper
 	{
-		padding-top: 45px;
 		position: fixed;
 		width: 100%;
 		top: 50%;
+		padding-top: 45px;
 		-webkit-transform:translateY(-50%);
 		-moz-transform:translateY(-50%);
 		-o-transform:translateY(-50%);
@@ -71,28 +120,32 @@ h2
 	#left-block
 	{
 		box-sizing: border-box;
-		padding: 0 5% 0 20%;
 		display: inline-block;
-		width: 50%;
 		vertical-align: middle;
-	}
-
-	@media screen and (max-width:1200px){
-		#left-block{ padding: 0 5% 0 15%; }
+		width: 50%;
+		height: 700px;
+		/*padding: 0 5% 0 20%;*/
 	}
 
 	#right-block
 	{
+		box-sizing: border-box;
 		vertical-align: middle;
 		display: inline-block;
-		height: 700px;
-		width: 50%;
-		padding-right: 5%;
-		box-sizing: border-box;
+		width: 49%;
+		padding-right: 15%;
+		padding-left: 5%;
 	}
 
-	@media screen and (max-height:745px){
-		#right-block{ height: 600px; }
+	@media screen and (max-width:1200px){
+		#right-block
+		{
+			padding-right: 10%;
+		}
+	}
+
+	@media screen and (max-height:800px){
+		#left-block{ height: 550px; }
 	}
 
 	#enric-image
@@ -100,21 +153,22 @@ h2
 		display: block;
 		height: 100%;
 		width: auto;
-		margin-left: 5%;
+		float: right;
+		padding-right: 5%;
+		vertical-align: middle;
 	}
 
-	@media screen and (max-width:950px){
-		#enric-image
-		{
-			height: auto;  
-			width: 100%;
-			position: relative;
-			top: 50%;
-			-webkit-transform:translateY(-50%);
-			-moz-transform:translateY(-50%);
-			-o-transform:translateY(-50%);
-			-ms-transform:translateY(-50%);
-			transform:translateY(-50%);	
+	@media screen and (min-height:746px){
+		@media screen and (max-width:1000px){
+			#left-block{ height: 550px; }
 		}
+	}
+
+	#developer{
+		position:fixed;
+		bottom:10px;/*
+		width: 100%;
+		text-align: center;
+		padding-bottom: 10px;*/
 	}
 }
