@@ -19,8 +19,8 @@ $(document).ready(function() {
 	    e.preventDefault();
 	    var menuIcon = $(".c-menu")[0];
 	    (menuIcon.classList.contains("is-active") === true) ? menuIcon.classList.remove("is-active") : menuIcon.classList.add("is-active");
-	    $('#navigation').slideToggle(400);
-	    $('.menu-label').fadeToggle(400);
+	    $('#navigation').stop(true,true).slideToggle(400);
+	    $('.menu-label').stop(true,true).fadeToggle(400);
 	}
 
 	function hideMenu(event)

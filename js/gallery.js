@@ -94,12 +94,12 @@ $(document).ready(function() {
     
     $('#carousel').hover( function(){
 		if( N != Nmax )
-			$('#next').fadeIn("slow");
+			$('#next').stop(true,true).fadeIn("slow");
 		if( N != 0 )
-			$('#prev').fadeIn("slow");
+			$('#prev').stop(true,true).fadeIn("slow");
     }, function(){
-        $('#next').fadeOut("slow");
-		$('#prev').fadeOut("slow");
+        $('#next').stop(true,true).fadeOut("slow");
+		$('#prev').stop(true,true).fadeOut("slow");
     });
         
 });
