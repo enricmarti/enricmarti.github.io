@@ -44,25 +44,10 @@
 			currentIndex = Math.floor(Math.random() * filesList.length);
 
 			$(document).ready(function() {
-				$('#content-wrapper').css({'background-image':"url(../" + directory + filesList[currentIndex] + ")",
+				$('#content-wrapper').css({'background-image':"url(" + directory + filesList[currentIndex] + ")",
 		    		'-webkit-transition' : "background-image 0.1s ease-in-out",
 		    		'transition': "background-image 0.1s ease-in-out"});
 			});
-
-
-			/*function myCallback(fileextension, data){
-	        	//List all file names in the page
-		        $(data).find("a:contains(" + fileextension + ")").each(function () {
-		            var filename = this.href.replace(window.location.host, "").replace("http://", "");
-		            filesList.push(filename);
-		        });
-		        currentIndex = Math.floor(Math.random() * filesList.length);
-		        $('#content-wrapper').css({'background-image':"url(../" + directory + filesList[currentIndex] + ")",
-		    		'-webkit-transition' : "background-image 0.1s ease-in-out",
-		    		'transition': "background-image 0.1s ease-in-out"});
-			}
-			RetrieveDirectoryFiles("../" + directory, ".jpg", myCallback);*/
-
 
 			$(window).bind('mousewheel DOMMouseScroll', function(event){
 				if( $(window).width() >= 801 )
@@ -72,7 +57,7 @@
 					else
 						currentIndex = modulus(++currentIndex, filesList.length);
 					console.log(currentIndex);
-					$('#content-wrapper').css({'background-image':"url(../" + directory + filesList[currentIndex] + ")"});
+					$('#content-wrapper').css({'background-image':"url(" + directory + filesList[currentIndex] + ")"});
 				}
 			});
 
@@ -84,12 +69,12 @@
 				if( $(window).width() <= 800 && windowWidth > 800 )
 				{
 					directory = "img/backgrounds-mobile";
-					$('#content-wrapper').css({'background-image':"url(../" + directory + filesList[currentIndex] + ")"});
+					$('#content-wrapper').css({'background-image':"url(" + directory + filesList[currentIndex] + ")"});
 				}
 				else if( $(window).width() > 800 && windowWidth <= 800 )
 				{
 					directory = "img/backgrounds";
-					$('#content-wrapper').css({'background-image':"url(../" + directory + filesList[currentIndex] + ")"});
+					$('#content-wrapper').css({'background-image':"url(" + directory + filesList[currentIndex] + ")"});
 				}
 				windowHeight = $(window).height();
 				windowWidth = $(window).width();
