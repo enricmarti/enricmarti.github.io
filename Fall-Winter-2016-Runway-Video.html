@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+		<title>Making-of | Enric Marti</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="css/spinner-style.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="css/menu-icon.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="css/making-of-style.css" media="screen">
+		<link rel="stylesheet" href="font-awesome-4.3.0/css/font-awesome.min.css">
+		<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+		<link rel="icon" type="image/png" href="favicon_16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="favicon_32.png" sizes="32x32">
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/navigation-bar.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				if( $(window).width() <= 800 )
+				{
+					$('.spinner').hide(0);
+					$('#bgvid').get(0).autoplay = false;
+					$('#bgvid').get(0).controls = true;
+				}
+					
+				$('#bgvid').click( function(){
+					if ($(this).get(0).paused) 
+					  $(this).get(0).play(); 
+					else 
+					  $(this).get(0).pause(); 
+				});			
+			});
+			function OnVideoLoaded() {
+				$('.spinner').hide(0);
+				//$('#bgvid').get(0).play()
+			}	
+		</script>
+		<!-- GOOGLE ANALYTICS -->
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-64773199-1', 'auto');
+		  ga('send', 'pageview');
+		</script>
+		<!-- -->
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+		<style>
+			.c-menu span,
+			.c-menu span::before,
+			.c-menu span::after {
+				background-color: white;
+			}
+
+			.menu-label{
+				color: white;
+			}
+
+			.c-menu--htx.is-active span::before,
+			.c-menu--htx.is-active span::after {
+				background-color: black;
+			}
+		</style>
+</head>
+
+<body>
+	<div id="header-container">
+		<span class="logo">
+			<a href="index.html"><img src="img/LogoEnric.svg"></img></a>
+		</span>
+		<label class="menu-label">MENU</label>
+		<button class="c-menu c-menu--htx">
+	 		<span>menu</span>
+		</button>
+		<div id="menu-bar">
+			<ul id="navigation" style="display:none">
+				<li class="dropdown"><a href="#">Fall/Winter 2016</a>
+					<ul class="sub_navigation">
+						<li><a href="Fall-Winter-2016-Runway.html">Runway</a></li>
+						<li><a href="Fall-Winter-2016-Runway-Video.html">Runway video</a></li>
+					</ul>
+				</li>
+				<li class="dropdown"><a href="#">Degree final project</a>
+					<ul class="sub_navigation">
+						<li><a href="Lookbook.html">Lookbook</a></li>
+						<li><a href="Campaign.html">Campaign</a></li>
+						<li><a href="Runway.html">Runway</a></li>
+						<li><a href="Making-of.html">Making-of</a></li>
+						<li><a href="Inspirations.html">Inspirations</a></li>
+						<li><a href="Thesis.html">Thesis</a></li>
+					</ul>		
+				</li>
+				<li class="dropdown"><a href="#">Projects</a>
+					<ul class="sub_navigation">
+						<li><a href="Reticular-Organism.html">Reticular organism</a></li>
+						<li><a href="The-Maker.html">The maker</a></li>
+						<li><a href="VAZ.html">VA'Z</a></li>
+						<li><a href="Others.html">Others</a></li>
+					</ul>
+				</li>
+				<li><a href="Press.html">Press</a></li>
+				<li><a href="About.html">About</a></li>
+				<li><a href="https://instagram.com/enricmarti_/"  target="_blank"><i class="fa fa-instagram fa-2x"></i></a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="content-wrapper">
+		<div class="spinner">
+			<div class="spinner-container container1">
+				<div class="circle1"></div>
+				<div class="circle2"></div>
+				<div class="circle3"></div>
+				<div class="circle4"></div>
+			</div>
+			<div class="spinner-container container2">
+				<div class="circle1"></div>
+				<div class="circle2"></div>
+				<div class="circle3"></div>
+				<div class="circle4"></div>
+			</div>
+			<div class="spinner-container container3">
+				<div class="circle1"></div>
+				<div class="circle2"></div>
+				<div class="circle3"></div>
+				<div class="circle4"></div>
+			</div>
+		</div>
+		<video autoplay loop id="bgvid" oncanplaythrough="OnVideoLoaded()">
+			<source src="video/Fall-Winter-2016-Enric-Marti.mp4" type="video/mp4">
+		</video>
+	</div>
+
+</body>
+
+</html>
