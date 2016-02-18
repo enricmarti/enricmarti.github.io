@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(window).load(function() {
 
 	var windowHeight = $(window).height();
 	var windowWidth = $(window).width();
