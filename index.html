@@ -56,7 +56,6 @@
 						currentIndex = modulus(--currentIndex, filesList.length);
 					else
 						currentIndex = modulus(++currentIndex, filesList.length);
-					console.log(currentIndex);
 					$('#content-wrapper').css({'background-image':"url(" + directory + filesList[currentIndex] + ")"});
 				}
 			});
