@@ -3,7 +3,8 @@ $(document).ready(function() {
 	function sliderWidth(n){
 		var width = 0;
 		for ( var i = 0; i <= n; i++ )
-			width += $('#slides li').eq(i).outerWidth() + parseInt($('#slides li').eq(i).css("marginRight"));
+			// Sumarli 1 es una guarrada pel tema del arrodoniment. S'hauria d'obtenir el tamany sense arrodonir.
+			width += $('#slides li').eq(i).outerWidth(true) + 1;
 		return width;
 	}
 	
