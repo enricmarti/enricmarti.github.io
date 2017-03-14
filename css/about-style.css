@@ -1,3 +1,10 @@
+#download_container
+{
+	display: block;
+	margin-bottom: 20px;
+	margin-right: 5px;
+}
+
 #fixed-block
 {
 	height: 45px;
